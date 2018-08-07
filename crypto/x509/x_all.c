@@ -205,6 +205,10 @@ int i2d_X509_REQ_bio(BIO *bp, X509_REQ *req)
 #ifndef OPENSSL_NO_RSA
 
 #ifndef OPENSSL_NO_FP_API
+
+DECLARE_ASN1_ITEM(RSAPrivateKey);
+DECLARE_ASN1_ITEM(RSAPublicKey);
+
 RSA *d2i_RSAPrivateKey_fp(FILE *fp, RSA **rsa)
 	{
 	return ASN1_item_d2i_fp(ASN1_ITEM_rptr(RSAPrivateKey), fp, rsa);

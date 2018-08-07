@@ -320,15 +320,19 @@ typedef struct ASN1_VALUE_st ASN1_VALUE;
 
 #define	DECLARE_ASN1_ENCODE_FUNCTIONS_const(type, name) \
 	type *d2i_##name(type **a, const unsigned char **in, long len); \
-	int i2d_##name(const type *a, unsigned char **out); \
-	DECLARE_ASN1_ITEM(name)
+	int i2d_##name(const type *a, unsigned char **out);
 
 #define	DECLARE_ASN1_NDEF_FUNCTION(name) \
 	int i2d_##name##_NDEF(name *a, unsigned char **out);
 
+#if 0
 #define DECLARE_ASN1_FUNCTIONS_const(name) \
 	DECLARE_ASN1_ALLOC_FUNCTIONS(name) \
 	DECLARE_ASN1_ENCODE_FUNCTIONS_const(name, name)
+#else
+#define DECLARE_ASN1_FUNCTIONS_const(name) \
+	DECLARE_ASN1_ALLOC_FUNCTIONS(name)
+#endif
 
 #define DECLARE_ASN1_ALLOC_FUNCTIONS_name(type, name) \
 	type *name##_new(void); \
